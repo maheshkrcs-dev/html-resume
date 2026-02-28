@@ -3,60 +3,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahesh Kumar | Research Portfolio</title>
+    <title>Mahesh Kumar | AI Data Curator & IT Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
     <style>
-        :root { --sidebar-bg: #ffffff; --main-bg: #f3f6f9; --text-primary: #2c3e50; --accent: #3498db; }
-        body { font-family: 'Inter', sans-serif; display: flex; margin: 0; background-color: var(--main-bg); color: var(--text-primary); }
-        
-        /* Sidebar Navigation */
-        .sidebar { width: 280px; height: 100vh; background: var(--sidebar-bg); padding: 40px 20px; position: fixed; border-right: 1px solid #e1e4e8; display: flex; flex-direction: column; align-items: center; }
-        .sidebar img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--main-bg); margin-bottom: 20px; }
-        .nav-links { list-style: none; padding: 0; width: 100%; text-align: center; }
-        .nav-links li { padding: 12px; font-weight: 600; cursor: pointer; border-radius: 8px; transition: 0.3s; }
-        .nav-links li:hover { background: var(--main-bg); color: var(--accent); }
-        .social-icons { margin-top: auto; display: flex; gap: 15px; }
-
-        /* Main Content Area */
-        .content { margin-left: 320px; padding: 50px; max-width: 900px; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        h1 { font-size: 2.5rem; margin-bottom: 5px; }
-        .subtitle { font-size: 1.2rem; color: #7f8c8d; margin-bottom: 20px; }
-        h2 { border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        :root {
+            --primary: #22d3ee;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+        .timeline-line {
+            position: absolute;
+            left: 1.25rem;
+            top: 2.5rem;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #22d3ee, #67e8f9);
+        }
+        .section-title {
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #22d3ee;
+            bottom: -8px;
+            left: 0;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #22d3ee;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
     </style>
 </head>
-<body>
+<body class="bg-zinc-950 text-zinc-100 font-['Inter']">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-cyan-400 rounded-2xl flex items-center justify-center text-zinc-950 font-bold text-xl">MK</div>
+                <span class="text-2xl font-semibold tracking-tighter text-white">Mahesh Kumar</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#about" class="nav-link text-zinc-400 hover:text-white transition-colors">About</a>
+                <a href="#experience" class="nav-link text-zinc-400 hover:text-white transition-colors">Experience</a>
+                <a href="#projects" class="nav-link text-zinc-400 hover:text-white transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-zinc-400 hover:text-white transition-colors">Skills</a>
+                <a href="#education" class="nav-link text-zinc-400 hover:text-white transition-colors">Education</a>
+            </div>
 
-    <nav class="sidebar">
-        <img src="mahesh.jpg" alt="Mahesh Kumar">
-        <h3>Mahesh Kumar</h3>
-        <p style="text-align:center; font-size: 0.9rem; color: #7f8c8d;">Former Technical Assistant,<br>IIT Gandhinagar</p>
-        <ul class="nav-links">
-            <li>Home</li>
-            <li>Research</li>
-            <li>Projects</li>
-            <li>Experience</li>
-        </ul>
-        <div class="social-icons">
-            <a href="https://linkedin.com/in/maheshkrcs">🔗</a>
-            <a href="https://github.com/maheshkrcs-dev">💻</a>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" id="theme-toggle"
+                        class="w-10 h-10 flex items-center justify-center rounded-2xl border border-zinc-700 hover:border-cyan-400 transition-colors">
+                    <i class="fa-solid fa-moon text-xl"></i>
+                </button>
+                <a href="https://linkedin.com/in/maheshkrcs" target="_blank"
+                   class="px-6 py-3 bg-white text-zinc-950 font-semibold rounded-3xl flex items-center gap-2 hover:bg-cyan-400 transition-all">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span class="hidden sm:inline">Connect</span>
+                </a>
+            </div>
         </div>
     </nav>
 
-    <main class="content">
-        <section class="card">
-            <h1>Hello, I'm Mahesh Kumar</h1>
-            <p class="subtitle">Research & Technical Professional</p>
-            <p>I specialize in **AI/ML data curation**, **multilingual NLP**, and **Cloud Infrastructure**. My work at the **Lingo Research Group (IITGN)** focuses on developing large-scale datasets for Hinglish code-mixed text.</p>
-        </section>
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-3 px-5 py-2 bg-zinc-900 border border-cyan-400/30 rounded-3xl text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    Open to opportunities • Currently at IIT Gandhinagar
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold tracking-tighter leading-none">
+                    Hi, I'm <span class="bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">Mahesh Kumar</span>
+                </h1>
+                
+                <p class="text-2xl text-zinc-400 max-w-lg">
+                    Technical Assistant building the world's largest Hinglish dataset • 
+                    AI/ML Data Curator • Enterprise IT Engineer
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" 
+                       class="px-8 py-4 bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-semibold rounded-3xl flex items-center gap-3 transition-all">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Let's Connect
+                    </a>
+                    <a href="https://drive.google.com/file/d/1EXAMPLE/view" target="_blank" 
+                       class="px-8 py-4 border border-zinc-400 hover:border-white font-semibold rounded-3xl flex items-center gap-3 transition-all">
+                        <i class="fa-solid fa-download"></i>
+                        Download Resume
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm text-zinc-400">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Gandhinagar, Gujarat
+                    </div>
+                    <div>✉️ maheshkr.cs@gmail.com</div>
+                </div>
+            </div>
+            
+            <!-- Profile Image -->
+            <div class="flex justify-center md:justify-end">
+                <div class="relative">
+                    <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-cyan-400 to-sky-600 rounded-[3.5rem] p-2">
+                        <div class="w-full h-full bg-zinc-900 rounded-[3rem] overflow-hidden">
+                            <!-- Replace with your photo URL -->
+                            <img src="https://mahesh.jpg" alt="Mahesh Kumar" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <!-- Floating badge -->
+                    <div class="absolute -bottom-4 -right-4 bg-zinc-900 border border-cyan-400 px-6 py-3 rounded-3xl shadow-2xl">
+                        <div class="flex items-center gap-3">
+                            <div class="text-4xl">🏆</div>
+                            <div>
+                                <div class="text-sm font-medium">World's Largest</div>
+                                <div class="text-cyan-400 font-semibold">Hinglish Dataset</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-zinc-500">
+            <div>SCROLL TO EXPLORE</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-zinc-500 to-transparent"></div>
+        </div>
+    </section>
 
-        <section id="research-interests" class="card">
-            <h2>Research Interests</h2>
-            <h3>Natural Language Processing</h3>
-            <p>Building high-quality Hinglish benchmarks for sequence labeling (POS tagging, NER) and translations to enhance LLM capabilities.</p>
-            <h3>Cloud Infrastructure</h3>
-            <p>Deploying scalable serverless solutions on **AWS** using S3, EC2, and IAM best practices.</p>
-        </section>
-    </main>
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-zinc-900">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-title text-5xl font-semibold mb-12">About Me</h2>
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-7 text-lg leading-relaxed text-zinc-300">
+                    <p class="mb-6">
+                        Technical Assistant with 2+ years of hands-on experience at <span class="text-cyan-400">IIT Gandhinagar</span> and 
+                        <span class="text-cyan-400">Bharat Electronics Limited (BEL)</span>. I specialize in curating high-quality multilingual 
+                        NLP datasets and managing enterprise-grade IT infrastructure.
+                    </p>
+                    <p>
+                        Currently working under <span class="font-medium text-white">Prof. Mayank Singh</span> at the LINGO Research Group, 
+                        I contribute to building the world's largest public labeled code-mixed (Hinglish) dataset — a foundation for training 
+                        next-generation multilingual LLMs. Passionate about bridging research and real-world systems.
+                    </p>
+                </div>
+                <div class="md:col-span-5 bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+                    <div class="space-y-6">
+                        <div class="flex gap-6">
+                            <div class="text-4xl">📊</div>
+                            <div>
+                                <div class="font-semibold text-white">125K+ labeled instances</div>
+                                <div class="text-zinc-400 text-sm">Hinglish dataset for LLMs</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl">🛠️</div>
+                            <div>
+                                <div class="font-semibold text-white">100% Uptime</div>
+                                <div class="text-zinc-400 text-sm">VDI &amp; IT infrastructure at BEL</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl">🔬</div>
+                            <div>
+                                <div class="font-semibold text-white">Expert Annotator</div>
+                                <div class="text-zinc-400 text-sm">Using COMMENTATOR tool</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-title text-5xl font-semibold mb-12">Experience</h2>
+            
+            <div class="relative pl-12 space-y-20">
+                <!-- Line -->
+                <div class="timeline-line hidden md:block"></div>
+                
+                <!-- IITGN -->
+                <div class="relative">
+                    <div class="absolute -left-3 top-2 w-6 h-6 rounded-full border-4 border-cyan-400 bg-zinc-950"></div>
+                    <div class="grid md:grid-cols-12 gap-8">
+                        <div class="md:col-span-4">
+                            <div class="text-cyan-400 font-mono text-sm">Jun 2024 — Present</div>
+                            <div class="text-2xl font-semibold mt-1">Technical Assistant</div>
+                            <div class="text-white/70">IIT Gandhinagar • LINGO Research Group</div>
+                        </div>
+                        <div class="md:col-span-8 text-zinc-300 space-y-4">
+                            <ul class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    Collaborating on the world's largest public Hinglish dataset for LLM training
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    High-precision text &amp; image annotation using COMMENTATOR tool
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    Building benchmarks for low-level NLP tasks in code-mixed Hindi-English
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BEL -->
+                <div class="relative">
+                    <div class="absolute -left-3 top-2 w-6 h-6 rounded-full border-4 border-cyan-400 bg-zinc-950"></div>
+                    <div class="grid md:grid-cols-12 gap-8">
+                        <div class="md:col-span-4">
+                            <div class="text-cyan-400 font-mono text-sm">Mar 2022 — Mar 2023</div>
+                            <div class="text-2xl font-semibold mt-1">TAPP Trainee</div>
+                            <div class="text-white/70">Bharat Electronics Limited (BEL), Bangalore</div>
+                        </div>
+                        <div class="md:col-span-8 text-zinc-300 space-y-4">
+                            <ul class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    Deployed Virtual Desktop Infrastructure (VDI) and executed enterprise data backups
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    Managed dual-boot OS installations, hardware troubleshooting &amp; network peripherals
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="text-cyan-400 mt-1">•</span>
+                                    Ensured 99.9% system uptime across large-scale workstations
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-zinc-900">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-title text-5xl font-semibold mb-12">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 card-hover">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <div class="uppercase tracking-widest text-xs text-cyan-400">LINGO Research Group</div>
+                            <div class="text-2xl font-semibold mt-2">COMI-LINGUA Dataset &amp; COMMENTATOR Tool</div>
+                        </div>
+                        <i class="fa-solid fa-globe text-4xl text-zinc-700"></i>
+                    </div>
+                    <p class="text-zinc-400 mb-8">
+                        Contributed to the world's largest public labeled Hindi-English code-mixed dataset. 
+                        Performed granular linguistic annotation and benchmark creation for LLMs.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">Hinglish NLP</span>
+                        <span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">Data Annotation</span>
+                        <span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">COMMENTATOR</span>
+                    </div>
+                    <a href="https://lingo.iitgn.ac.in/codemixing/" target="_blank"
+                       class="mt-8 inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
+                        View Project →
+                    </a>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-8 card-hover">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <div class="uppercase tracking-widest text-xs text-cyan-400">Personal</div>
+                            <div class="text-2xl font-semibold mt-2">Secure Android Login System</div>
+                        </div>
+                        <i class="fa-brands fa-android text-4xl text-emerald-400"></i>
+                    </div>
+                    <p class="text-zinc-400 mb-8">
+                        Designed and implemented secure user authentication interfaces using XML layouts 
+                        and Java in Android Studio with proper validation and encryption.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">Android Studio</span>
+                        <span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">Java + XML</span>
+                        <span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-title text-5xl font-semibold mb-12">Technical Arsenal</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-cyan-400 transition-all">
+                    <div class="text-cyan-400 mb-6">
+                        <i class="fa-solid fa-code text-5xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">Languages</h3>
+                    <div class="space-y-3 text-zinc-300">
+                        <div class="flex justify-between"><span>C / C++</span><span class="text-emerald-400">Advanced</span></div>
+                        <div class="flex justify-between"><span>Python</span><span class="text-emerald-400">Advanced</span></div>
+                        <div class="flex justify-between"><span>SQL</span><span class="text-emerald-400">Intermediate</span></div>
+                        <div class="flex justify-between"><span>HTML / CSS / JS</span><span class="text-emerald-400">Intermediate</span></div>
+                    </div>
+                </div>
+                
+                <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-cyan-400 transition-all">
+                    <div class="text-cyan-400 mb-6">
+                        <i class="fa-solid fa-tools text-5xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">Tools &amp; Frameworks</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="bg-zinc-800 px-5 py-2 rounded-3xl text-sm">Android Studio</div>
+                        <div class="bg-zinc-800 px-5 py-2 rounded-3xl text-sm">COMMENTATOR</div>
+                        <div class="bg-zinc-800 px-5 py-2 rounded-3xl text-sm">MS Office Suite</div>
+                        <div class="bg-zinc-800 px-5 py-2 rounded-3xl text-sm">Git</div>
+                    </div>
+                </div>
+                
+                <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-cyan-400 transition-all">
+                    <div class="text-cyan-400 mb-6">
+                        <i class="fa-solid fa-server text-5xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">IT Operations</h3>
+                    <ul class="space-y-3 text-sm text-zinc-300">
+                        <li>✓ VDI Deployment</li>
+                        <li>✓ Dual-boot OS Setup</li>
+                        <li>✓ Hardware Diagnostics</li>
+                        <li>✓ Network Peripherals</li>
+                        <li>✓ Remote Support &amp; Backup</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-cyan-400 transition-all">
+                    <div class="text-cyan-400 mb-6">
+                        <i class="fa-solid fa-brain text-5xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-4">NLP Focus</h3>
+                    <div class="text-zinc-300 space-y-4 text-sm">
+                        <div>• Code-mixed text annotation</div>
+                        <div>• POS tagging &amp; syntactic analysis</div>
+                        <div>• Benchmark creation for LLMs</div>
+                        <div>• Multilingual dataset curation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-24 bg-zinc-900">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-title text-5xl font-semibold mb-12">Education</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-cyan-400 font-mono text-sm mb-2">2020</div>
+                    <div class="text-2xl font-semibold">Diploma in Computer Science</div>
+                    <div class="text-white/70 mt-1">New Government Polytechnic Patna-13</div>
+                    <div class="mt-8 text-emerald-400 font-medium">79.11%</div>
+                </div>
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-cyan-400 font-mono text-sm mb-2">2016</div>
+                    <div class="text-2xl font-semibold">Class 12 (PCM)</div>
+                    <div class="text-white/70 mt-1">Hellens School Rajopatti</div>
+                    <div class="mt-8 text-emerald-400 font-medium">56.6%</div>
+                </div>
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-cyan-400 font-mono text-sm mb-2">2014</div>
+                    <div class="text-2xl font-semibold">Class 10</div>
+                    <div class="text-white/70 mt-1">Doon Senior Secondary School</div>
+                    <div class="mt-8 text-emerald-400 font-medium">8.8 CGPA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="text-5xl font-semibold mb-6">Let's build something great together</div>
+            <p class="text-zinc-400 text-xl max-w-md mx-auto mb-10">
+                Whether it's data for the next big LLM or enterprise IT infrastructure — I'm ready.
+            </p>
+            <a href="mailto:maheshkr.cs@gmail.com" 
+               class="inline-flex items-center gap-4 text-2xl font-medium px-12 py-6 bg-gradient-to-r from-cyan-400 to-sky-400 text-zinc-950 rounded-3xl hover:scale-105 transition-all">
+                <span>maheshkr.cs@gmail.com</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="mt-16 text-zinc-500 text-sm">Sitamarhi, Bihar • Available for full-time roles &amp; collaborations</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-zinc-900">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-zinc-500">
+            <div>© 2026 Mahesh Kumar. All rights reserved.</div>
+            <div class="flex gap-8">
+                <a href="https://linkedin.com/in/maheshkrcs" target="_blank" class="hover:text-cyan-400 transition-colors">
+                    <i class="fa-brands fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">
+                    <i class="fa-brands fa-github text-2xl"></i>
+                </a>
+            </div>
+            <div>Made with ❤️ for the future of multilingual AI</div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-toggle').querySelector('i');
+            if (icon.classList.contains('fa-moon')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.add('fa-moon');
+                icon.classList.remove('fa-sun');
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu (can be extended)
+        console.log('%c✅ Portfolio loaded successfully! Replace profile image and resume link with your own.', 'color: #22d3ee; font-size: 14px');
+    </script>
 </body>
 </html>
