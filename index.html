@@ -1,73 +1,62 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahesh Kumar - Portfolio</title>
+    <title>Mahesh Kumar | Research Portfolio</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; background-color: #f4f4f9; }
-        header { background: #2c3e50; color: white; padding: 30px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
-        h1 { margin: 0; font-size: 2.5em; }
-        .contact-info { margin-top: 10px; font-size: 0.9em; }
-        section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { border-bottom: 2px solid #3498db; color: #2980b9; padding-bottom: 5px; }
-        .job { display: flex; justify-content: space-between; font-weight: bold; margin-top: 10px; }
-        .company { color: #7f8c8d; font-style: italic; }
-        .skills-tag { display: inline-block; background: #e1e8ed; padding: 5px 12px; border-radius: 15px; margin: 5px; font-size: 0.9em; font-weight: 500; }
+        :root { --sidebar-bg: #ffffff; --main-bg: #f3f6f9; --text-primary: #2c3e50; --accent: #3498db; }
+        body { font-family: 'Inter', sans-serif; display: flex; margin: 0; background-color: var(--main-bg); color: var(--text-primary); }
+        
+        /* Sidebar Navigation */
+        .sidebar { width: 280px; height: 100vh; background: var(--sidebar-bg); padding: 40px 20px; position: fixed; border-right: 1px solid #e1e4e8; display: flex; flex-direction: column; align-items: center; }
+        .sidebar img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--main-bg); margin-bottom: 20px; }
+        .nav-links { list-style: none; padding: 0; width: 100%; text-align: center; }
+        .nav-links li { padding: 12px; font-weight: 600; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .nav-links li:hover { background: var(--main-bg); color: var(--accent); }
+        .social-icons { margin-top: auto; display: flex; gap: 15px; }
+
+        /* Main Content Area */
+        .content { margin-left: 320px; padding: 50px; max-width: 900px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        h1 { font-size: 2.5rem; margin-bottom: 5px; }
+        .subtitle { font-size: 1.2rem; color: #7f8c8d; margin-bottom: 20px; }
+        h2 { border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Mahesh Kumar</h1>
-    <div class="contact-info">
-        Sitamarhi, Bihar | +91 8210038549 | maheshkr.cs@gmail.com <br>
-        <a href="https://linkedin.com/in/maheshkrcs" style="color: #3498db; text-decoration: none;">LinkedIn</a> | GitHub: maheshkrcs-dev
-    </div>
-</header>
-
-<section>
-    <h2>Experience</h2>
-    <div>
-        <div class="job"><span>IIT Gandhinagar (IITGN)</span> <span>June 2024 – Feb 2026</span></div>
-        <div class="company">Technical Assistant</div>
-        <ul>
-            <li>Collaborated under Prof. Mayank Singh to develop the world's largest public labeled code-mixed (Hinglish) dataset for LLMs.</li>
-            <li>High-accuracy data annotation for text and images to support machine learning research.</li>
+    <nav class="sidebar">
+        <img src="mahesh.jpg" alt="Mahesh Kumar">
+        <h3>Mahesh Kumar</h3>
+        <p style="text-align:center; font-size: 0.9rem; color: #7f8c8d;">Former Technical Assistant,<br>IIT Gandhinagar</p>
+        <ul class="nav-links">
+            <li>Home</li>
+            <li>Research</li>
+            <li>Projects</li>
+            <li>Experience</li>
         </ul>
-    </div>
-    <br>
-    <div>
-        <div class="job"><span>Bharat Electronics Limited (BEL)</span> <span>March 2022 – March 2023</span></div>
-        <div class="company">TAPP Trainee</div>
-        <ul>
-            <li>Deployed and configured Virtual Desktop Infrastructure (VDI).</li>
-            <li>Managed enterprise IT infrastructure and resolved OS/hardware issues.</li>
-        </ul>
-    </div>
-</section>
-    
-<section id="research">
-    <h2>Research Portfolio</h2>
-    <div class="header-card">
-        <p class="highlight">Contributor | Lingo Research Group, IITGN</p>
-        <p>Managed data strategy and curation for the Hinglish Code-Mixed project, focusing on improving multilingual understanding for Large Language Models.</p>
-        <a href="https://lingo.iitgn.ac.in/codemixing/" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">Official Project Link 🔗</a>
-    </div>
-</section>
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/maheshkrcs">🔗</a>
+            <a href="https://github.com/maheshkrcs-dev">💻</a>
+        </div>
+    </nav>
 
-<section>
-    <h2>Technical Skills</h2>
-    <div class="skills-tag">Python</div> <div class="skills-tag">SQL</div> 
-    <div class="skills-tag">AWS (EC2, IAM)</div> <div class="skills-tag">JavaScript</div>
-    <div class="skills-tag">Android Studio</div> <div class="skills-tag">VDI Deployment</div>
-</section>
+    <main class="content">
+        <section class="card">
+            <h1>Hello, I'm Mahesh Kumar</h1>
+            <p class="subtitle">Research & Technical Professional</p>
+            <p>I specialize in **AI/ML data curation**, **multilingual NLP**, and **Cloud Infrastructure**. My work at the **Lingo Research Group (IITGN)** focuses on developing large-scale datasets for Hinglish code-mixed text.</p>
+        </section>
 
-<section>
-    <h2>Education</h2>
-    <p><strong>Diploma in Computer Science (79.11%)</strong> - New Government Polytechnic Patna-13</p>
-</section>
+        <section id="research-interests" class="card">
+            <h2>Research Interests</h2>
+            <h3>Natural Language Processing</h3>
+            <p>Building high-quality Hinglish benchmarks for sequence labeling (POS tagging, NER) and translations to enhance LLM capabilities.</p>
+            <h3>Cloud Infrastructure</h3>
+            <p>Deploying scalable serverless solutions on **AWS** using S3, EC2, and IAM best practices.</p>
+        </section>
+    </main>
 
 </body>
 </html>
-
